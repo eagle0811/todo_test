@@ -227,7 +227,7 @@ html {
 
 /* ─── 削除ボタン ─── */
 .delete-btn {
-  color: #cbd5e1;
+  color: #7cb9f5;
   background: none;
   border: none;
   cursor: pointer;
@@ -235,18 +235,13 @@ html {
   border-radius: 8px;
   display: flex;
   align-items: center;
-  opacity: 0;
-  transition: color 0.15s, opacity 0.15s, background 0.15s;
+  transition: color 0.15s, background 0.15s;
   flex-shrink: 0;
-}
-
-.todo-item:hover .delete-btn {
-  opacity: 1;
 }
 
 .delete-btn:hover {
   color: #f87171;
-  background: #fef2f2;
+  background: rgba(254, 242, 242, 0.7);
 }
 
 /* ─── 完了済みセクション ─── */
