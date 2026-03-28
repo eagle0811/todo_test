@@ -3,26 +3,24 @@
 import { useState, useEffect } from 'react';
 import type { Todo } from '@/types/todo';
 
-const STORAGE_KEY = 'todos';
+const STORAGE_KEY = 'todos-v2';
 
 export function useTodos() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // マウント時に localStorage から読み込み
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
         setTodos(JSON.parse(stored));
-      } catch (error) {
-        console.error('Failed to parse todos:', error);
+      } catch {
+        // ignore
       }
     }
     setIsLoaded(true);
   }, []);
 
-  // todos が変更されたら localStorage に保存
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
@@ -30,26 +28,22 @@ export function useTodos() {
   }, [todos, isLoaded]);
 
   const addTodo = (text: string) => {
-    if (!text.trim()) return;
-    const newTodo: Todo = {
-      id: Date.now().toString(),
-      text: text.trim(),
-      completed: false,
-      createdAt: Date.now(),
-    };
-    setTodos([newTodo, ...todos]);
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    setTodos((prev) => [
+      { id: Date.now().toString(), text: trimmed, completed: false, createdAt: Date.now() },
+      ...prev,
+    ]);
   };
 
   const toggleTodo = (id: string) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
   };
 
   const deleteTodo = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos((prev) => prev.filter((t) => t.id !== id));
   };
 
   return { todos, isLoaded, addTodo, toggleTodo, deleteTodo };

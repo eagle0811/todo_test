@@ -1,70 +1,301 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  font-family: 'Noto Sans JP', sans-serif;
-  scroll-behavior: smooth;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-body {
-  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  background-attachment: fixed;
+/* ─── ページ ─── */
+.page {
   min-height: 100vh;
-  color: #e5e7eb;
+  background: linear-gradient(160deg, #bfdbfe 0%, #c7d9f8 30%, #d4e8fb 70%, #cfe3f7 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 56px 20px 100px;
 }
 
-/* グラスモーフィズムカード */
-.glass-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
+.container {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.glass-input {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 0.75rem;
-  transition: all 0.2s;
+/* ─── ヘッダー ─── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 4px;
 }
 
-.glass-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.glass-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* グラデーションテキスト */
-.gradient-text {
-  background: linear-gradient(to right, rgb(165, 180, 252), rgb(196, 181, 253), rgb(165, 180, 252));
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* グラデーションボタン */
-.gradient-button {
-  background: linear-gradient(to right, rgb(99, 102, 241), rgb(139, 92, 246));
-  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-  transition: all 0.3s;
+.subtitle {
+  font-size: 0.85rem;
+  color: #93c5fd;
+  font-weight: 500;
 }
 
-.gradient-button:hover {
-  background: linear-gradient(to right, rgb(79, 70, 229), rgb(109, 40, 217));
-  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+.counter-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* ─── 入力カード ─── */
+.input-card {
+  background: rgba(219, 234, 254, 0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.12);
+  display: flex;
+  gap: 10px;
+  border: 1.5px solid rgba(147, 197, 253, 0.5);
+}
+
+.input-field {
+  flex: 1;
+  height: 46px;
+  padding: 0 16px;
+  background: rgba(239, 246, 255, 0.8);
+  border: 1.5px solid #bfdbfe;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #1e3a5f;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.input-field::placeholder {
+  color: #a5b4c8;
+}
+
+.input-field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.add-btn {
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+}
+
+.add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5);
+}
+
+.add-btn:active {
+  transform: scale(0.94);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.add-btn:disabled {
+  background: #93c5fd;
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── タスクリスト ─── */
+.lists {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ─── タスクアイテム ─── */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: rgba(219, 234, 254, 0.45);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1.5px solid rgba(147, 197, 253, 0.45);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.todo-item:hover {
+  border-color: rgba(96, 165, 250, 0.7);
+  box-shadow: 0 4px 18px rgba(59, 130, 246, 0.16);
+  transform: translateY(-1px);
+}
+
+.todo-item.completed {
+  background: rgba(191, 219, 254, 0.25);
+  border-color: rgba(147, 197, 253, 0.2);
+  box-shadow: none;
+  transform: none;
+}
+
+/* ─── チェックボックス ─── */
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 2px solid #93c5fd;
+  background: rgba(239, 246, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.todo-item.completed .checkbox {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+  transform: scale(1.05);
+}
+
+.checkbox:hover:not(.checked) {
+  border-color: #3b82f6;
+  background: rgba(219, 234, 254, 0.8);
+}
+
+/* ─── テキスト ─── */
+.todo-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #1e3a5f;
+  cursor: pointer;
+  line-height: 1.5;
+  font-weight: 500;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.todo-item.completed .todo-text {
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+/* ─── 削除ボタン ─── */
+.delete-btn {
+  color: #cbd5e1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: color 0.15s, opacity 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+
+.todo-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  color: #f87171;
+  background: #fef2f2;
+}
+
+/* ─── 完了済みセクション ─── */
+.done-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.done-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #93c5fd;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 4px;
+}
+
+/* ─── 空状態 ─── */
+.empty {
+  text-align: center;
+  padding: 56px 24px;
+  background: rgba(219, 234, 254, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 1.5px dashed #93c5fd;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  display: block;
+  opacity: 0.6;
+}
+
+.empty p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.empty-sub {
+  font-size: 0.82rem !important;
+  color: #c7d7e8 !important;
+  margin-top: 4px;
+}
+
+/* ─── アニメーション ─── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }

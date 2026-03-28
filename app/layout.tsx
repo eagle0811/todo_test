@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ToDoアプリ',
-  description: 'シンプルで効率的なタスク管理アプリ',
-  viewport: 'width=device-width, initial-scale=1',
+  title: 'My Tasks',
+  description: 'シンプルなタスク管理アプリ',
 };
 
 export default function RootLayout({
